@@ -33,12 +33,12 @@
       ]
     },
     "versionFirst": "4.6.3",
-    "uniqCompNum": 32,
+    "uniqCompNum": 35,
     "versionPublish": "4.7.8",
     "path": "@PROJECT_PATH@",
     "screenshot": "screenshot.png",
     "favicon": "",
-    "noImageResize": "",
+    "noImageResize": "true",
     "cookiesAlert": "",
     "google-analytics": "<!-- Google Analytics -->\r\n<!-- Google Analytics -->\r\n<!-- Google Tag Manager -->\r\n<noscript><iframe src=\"//www.googletagmanager.com/ns.html?id=GTM-PFK425\"\r\nheight=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\r\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\r\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\r\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\r\n'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\r\n})(window,document,'script','dataLayer','GTM-PFK425');</script>\r\n<!-- End Google Tag Manager -->\r\n<!-- /Google Analytics -->\r\n<!-- /Google Analytics -->",
     "siteUrl": "undefined",
@@ -547,76 +547,133 @@
         },
         {
           "_styles": {
-            "padding-top": "(@paddingTop * 15px)",
-            "padding-bottom": "(@paddingBottom * 15px)",
-            "& when (@bg-type = 'color')": {
-              "background-color": "@bg-value"
+            "body": {
+              "background-color": "#eeeeee"
             },
-            "& when (@bg-type = 'image')": {
-              "background-image": "url(@bg-value)"
-            },
-            ".card": {
-              "display": "flex",
-              "position": "relative",
+            ".wrap": {
+              "margin": "100px auto 0 auto",
+              "width": "100%",
               "justify-content": "center",
-              ".card-wrapper": {
-                "background": "@cardBg",
-                "height": "1%",
-                ".card-img": {
-                  "position": "relative",
-                  "overflow": "hidden",
-                  "border-radius": "0",
-                  "z-index": "1",
-                  "img": {
-                    "transition": "all .5s"
-                  },
-                  ".img-text": {
-                    "position": "absolute",
-                    "padding": ".6rem",
-                    "top": "1.5rem",
-                    "left": "1.5rem",
-                    "z-index": "1",
-                    "border-radius": "100px",
-                    "background-color": "@dateBg",
-                    "span": {
-                      "display": "block"
-                    }
-                  }
-                },
-                ".card-box": {
-                  "padding": "1.5rem"
-                }
+              "flex-direction": "column",
+              "display": "flex",
+              "align-items": "space-around",
+              "max-width": "1200px"
+            },
+            ".tile": {
+              "width": "380px",
+              "height": "284px",
+              "margin": "10px",
+              "background-color": "#99aeff",
+              "display": "inline-block",
+              "background-size": "cover",
+              "position": "relative",
+              "cursor": "pointer",
+              "transition": "all 0.4s ease-out",
+              "box-shadow": "0px 35px 77px -17px rgba(0, 0, 0, 0.44)",
+              "overflow": "hidden",
+              "color": "white",
+              "font-family": "'Roboto'"
+            },
+            ".tile img": {
+              "height": "100%",
+              "width": "100%",
+              "position": "absolute",
+              "top": "0",
+              "left": "0",
+              "z-index": "0",
+              "transition": "all 0.4s ease-out"
+            },
+            ".tile .text": {
+              "position": "absolute",
+              "padding": "30px",
+              "height": "calc(100% - 60px)"
+            },
+            ".tile h1": {
+              "font-weight": "300",
+              "margin": "0",
+              "text-shadow": "2px 2px 10px rgba(0, 0, 0, 0.3)"
+            },
+            ".tile h2": {
+              "font-weight": "100",
+              "margin": "20px 0 0 0",
+              "font-style": "italic",
+              "transform": "translateX(200px)"
+            },
+            ".tile p": {
+              "font-weight": "300",
+              "margin": "20px 0 0 0",
+              "line-height": "25px",
+              "transform": "translateX(-200px)",
+              "transition-delay": "0.2s"
+            },
+            ".animate-text": {
+              "opacity": "0",
+              "transition": "all 0.6s ease-in-out"
+            },
+            ".tile:hover": {
+              "box-shadow": "0px 35px 77px -17px rgba(0, 0, 0, 0.64)",
+              "transform": "scale(1.05)"
+            },
+            ".tile:hover img": {
+              "opacity": "0.2"
+            },
+            ".tile:hover .animate-text": {
+              "transform": "translateX(0)",
+              "opacity": "1"
+            },
+            ".dots": {
+              "bottom": "30px",
+              "right": "0px",
+              "margin": "0 auto",
+              "width": "30px",
+              "height": "30px",
+              "color": "currentColor",
+              "display": "flex",
+              "flex-direction": "column",
+              "align-items": "center",
+              "justify-content": "space-around"
+            },
+            ".dots span": {
+              "width": "5px",
+              "height": "5px",
+              "background-color": "currentColor",
+              "border-radius": "50%",
+              "display": "block",
+              "opacity": "0",
+              "transition": "transform 0.4s ease-out, opacity 0.5s ease",
+              "transform": "translateY(30px)"
+            },
+            ".tile:hover span": {
+              "opacity": "1",
+              "transform": "translateY(0px)"
+            },
+            ".dots span:nth-child(1)": {
+              "transition-delay": "0.05s"
+            },
+            ".dots span:nth-child(2)": {
+              "transition-delay": "0.1s"
+            },
+            ".dots span:nth-child(3)": {
+              "transition-delay": "0.15s"
+            },
+            "@media (max-width: 1000px)": {
+              ".wrap": {
+                "flex-direction": "column",
+                "width": "400px"
               }
             },
-            "@media (max-width: 767px)": {},
-            ".mbr-card-text": {
-              "color": "#ffffff",
-              "margin": "0"
-            },
-            ".mbr-section-btn": {
-              "padding-top": "1rem"
-            },
-            ".img-text": {
-              "color": "#000000"
-            },
-            ".mbr-card-text, .mbr-section-btn": {
-              "color": "#ffffff",
-              "text-align": "left"
-            },
-            ".mbr-title": {
-              "color": "#efefef"
-            },
-            ".mbr-section-title B": {
-              "color": "#365c9a"
-            },
-            ".mbr-section-title": {
+            "H1": {
               "color": "#365c9a"
             }
           },
-          "_name": "features19",
-          "_customHTML": "<section class=\"features19\" group=\"Features\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" mbr-class=\"{'mbr-parallax-background': bg.parallax}\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"9\" step=\"1\" value=\"6\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"9\" step=\"1\" value=\"0\">\n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Show Subtitle\" name=\"showSubtitle\">\n        <input type=\"checkbox\" title=\"Show Text\" name=\"showText\" checked>\n        <input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked>\n        <input type=\"checkbox\" title=\"Show Captions\" name=\"showCaptions\">\n        <input type=\"color\" title=\"Caption BG\" name=\"dateBg\" value=\"#92b5d5\" condition=\"showCaptions\">\n        <input type=\"color\" title=\"Card Bg\" name=\"cardBg\" value=\"#365c9a\">\n        <select title=\"Cards\" name=\"cardsAmount\">\n            <option value=\"1\">1</option>\n            <option value=\"2\">2</option>\n            <option value=\"3\" selected>3</option>\n            <option value=\"4\">4</option>\n        </select>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/background5.jpg\" parallax>\n            <input type=\"color\" title=\"Background Color\" value=\"#ffffff\" selected>\n            <input type=\"video\" title=\"Background Video\" value=\"https://www.youtube.com/watch?v=kI1YE_qenSU\">\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#efefef\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.8\" condition=\"overlay && bg.type !== 'color'\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div class=\"container\">\n        <h2 class=\"mbr-section-title align-left mbr-fonts-style\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Катигории товаров \"<b>DINITROL\"&nbsp;</b></h2>\n\n        <p class=\"mbr-section-subtitle display-5 align-left mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\">\n            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde et repellat fuga sed impedit hic, nesciunt, soluta ratione facere ad nisi deleniti magni. Dolore libero, saepe repudiandae ex ipsa natus.\n        </p>\n        <div class=\"row justify-content-center align-items-start\">\n            \n            <div class=\"card px-3 py-4\" mbr-class=\"{'col-md-6 col-lg-3':cardsAmount=='4',\n                             'col-md-4':cardsAmount=='3',\n                             'col-md-6':cardsAmount<3}\">\n                <div class=\"card-wrapper flip-card\">\n                    <div class=\"card-img\">\n                        <img src=\"@PROJECT_PATH@/assets/images/9f049u-960-960x639.jpg\" alt=\"Mobirise\" title>\n                        <div mbr-text class=\"img-text mbr-text mbr-fonts-style align-left mbr-white\" mbr-theme-style=\"display-4\" data-app-selector=\".img-text\" mbr-if=\"showCaptions\">Dinitrol 479</div>\n                    </div>\n                    <div class=\"card-box\" mbr-if=\"showText || showButtons\">\n                        <h3 class=\"mbr-title mbr-fonts-style mbr-bold mbr-black\" mbr-text mbr-theme-style=\"display-5\" data-app-selector=\".mbr-title\">Dinitrol &nbsp; Жидкие подкрылки и напыляемая шумоизоляция</h3>\n                        <p class=\"mbr-card-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-card-text, .mbr-section-btn\">&nbsp;Одним из популярных товаров для защиты автомобильного кузова от коррозии являются так называемые «жидкие подкрылки».&nbsp;</p>\n                        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd\"><a href=\"fenders.html#features19-t\" class=\"btn btn-md btn-warning\" data-app-placeholder=\"Введите Текст\"><span class=\"mbri-preview mbr-iconfont mbr-iconfont-btn\"></span>Прочитайте больше</a></div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"card px-3 py-4\" mbr-if=\"cardsAmount > 1\" mbr-class=\"{'col-md-6 col-lg-3':cardsAmount=='4',\n                             'col-md-4':cardsAmount=='3',\n                             'col-md-6':cardsAmount<3}\">\n                <div class=\"card-wrapper flip-card\">\n                    <div class=\"card-img\">\n                        <img src=\"@PROJECT_PATH@/assets/images/maxresdefault-696x392.jpg\" alt=\"Mobirise\" title>\n                        <div mbr-text class=\"img-text mbr-text mbr-fonts-style align-left mbr-white\" mbr-theme-style=\"display-4\" data-app-selector=\".img-text\" mbr-if=\"showCaptions\">\n                             HEADPHONES\n                        </div>\n                    </div>\n                    <div class=\"card-box\" mbr-if=\"showText || showButtons\">\n                        <h3 class=\"mbr-title mbr-fonts-style mbr-bold mbr-black\" mbr-text mbr-theme-style=\"display-5\" data-app-selector=\".mbr-title\">\n                            Dinitrol &nbsp; Антикоры</h3>\n                        <p class=\"mbr-card-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-card-text, .mbr-section-btn\">&nbsp;Представленные в данном разделе антикоррозионные материалы предназначены для обработки днища, арок и&nbsp;скрытых полостей.</p>\n                        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd\"><a href=\"https://mobirise.com\" class=\"btn btn-md btn-warning\" data-app-placeholder=\"Введите Текст\"><span class=\"mbri-preview mbr-iconfont mbr-iconfont-btn\"></span>Прочитайте больше</a></div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"card px-3 py-4\" mbr-if=\"cardsAmount > 2\" mbr-class=\"{'col-md-6 col-lg-3':cardsAmount=='4',\n                             'col-md-4':cardsAmount=='3',\n                             'col-md-6':cardsAmount<3}\">\n                <div class=\"card-wrapper flip-card\">\n                    <div class=\"card-img\">\n                        <img src=\"@PROJECT_PATH@/assets/images/1-26-640x1138.jpg\" alt=\"Mobirise\" title>\n                        <div mbr-text class=\"img-text mbr-text mbr-fonts-style align-left mbr-white\" mbr-theme-style=\"display-4\" data-app-selector=\".img-text\" mbr-if=\"showCaptions\">\n                             HEADPHONES\n                        </div>\n                    </div>\n                    <div class=\"card-box\" mbr-if=\"showText || showButtons\">\n                        <h3 class=\"mbr-title mbr-fonts-style mbr-bold mbr-black\" mbr-text mbr-theme-style=\"display-5\" data-app-selector=\".mbr-title\">Dinitrol &nbsp;Преобразователи ржавчины</h3>\n                        <p class=\"mbr-card-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-card-text, .mbr-section-btn\">&nbsp; Преобразователь ржавчины на водной основе</p>\n                        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd\"><a href=\"https://mobirise.com\" class=\"btn btn-md btn-warning\" data-app-placeholder=\"Введите Текст\"><span class=\"mbri-preview mbr-iconfont mbr-iconfont-btn\"></span>Прочитайте больше</a></div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"card px-3 py-4\" mbr-if=\"cardsAmount > 3\" mbr-class=\"{'col-md-6 col-lg-3':cardsAmount=='4',\n                             'col-md-4':cardsAmount=='3',\n                             'col-md-6':cardsAmount<3}\">\n                <div class=\"card-wrapper flip-card\">\n                    <div class=\"card-img\">\n                        <img src=\"../_images/img/06.jpg\" alt=\"Mobirise\">\n                        <div mbr-text class=\"img-text mbr-text mbr-fonts-style align-left mbr-white\" mbr-theme-style=\"display-4\" data-app-selector=\".img-text\" mbr-if=\"showCaptions\">\n                             HEADPHONES\n                        </div>\n                    </div>\n                    <div class=\"card-box\" mbr-if=\"showText || showButtons\">\n                        <h3 class=\"mbr-title mbr-fonts-style mbr-bold mbr-black\" mbr-text mbr-theme-style=\"display-5\" data-app-selector=\".mbr-title\">\n                            HEADPHONES\n                        </h3>\n                        <p class=\"mbr-card-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-card-text, .mbr-section-btn\">\n                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n                        </p>\n                        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd\">\n                            <a href=\"https://mobirise.com\" class=\"btn btn-md btn-primary\">Read More</a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
-          "_cid": "qIjES4e5vV",
-          "_anchor": "features19-5",
+          "_name": "header2",
+          "_customHTML": "<div class=\"wrap\" style=\"justify-content: center; display: flex; flex-wrap:wrap; margin: 100px auto 100px auto;\">\n<div class=\"tile\"> \n  <img src=\"@PROJECT_PATH@/assets/images/9f049u-960-960x639.jpg\" alt title>\n  <div class=\"text\">\n  <h1>DINITROL&nbsp;</h1>\n  <h2 class=\"animate-text\">Dinitrol   Жидкие подкрылки и напыляемая шумоизоляция</h2>\n  <p class=\"animate-text\"><a href=\"fenders.html#features19-t\" class=\"text-white\">&nbsp;Одним из популярных товаров для защиты автомобильного кузова от коррозии являются так называемые «жидкие подкрылки».</a></p>\n<div class=\"dots\">\n    <span></span>\n    <span></span>\n    <span></span>\n  </div>\n  </div>\n </div>\n\n\n<div class=\"tile\"> \n  <img src=\"@PROJECT_PATH@/assets/images/maxresdefault-696x392.jpg\" alt title>\n  <div class=\"text\">\n  <h1>DINITROL</h1>\n  <h2 class=\"animate-text\">Dinitrol   Антикоры</h2>\n  <p class=\"animate-text\">Представленные в данном разделе антикоррозионные материалы предназначены для обработки днища, арок и скрытых полостей.</p>\n<div class=\"dots\">\n    <span></span>\n    <span></span>\n    <span></span>\n  </div>\n</div>\n </div>\n  \n  <div class=\"tile\"> \n  <img src=\"@PROJECT_PATH@/assets/images/index.jpg\" alt title>\n  <div class=\"text\">\n  <h1>DINITROL</h1>\n  <h2 class=\"animate-text\">Dinitrol  Преобразователи ржавчины</h2>\n  <p class=\"animate-text\">  Преобразователь ржавчины на водной основе</p>\n<div class=\"dots\">\n    <span></span>\n    <span></span>\n    <span></span>\n  </div>\n  </div>\n </div>\n</div>",
+          "_anchor": "header2-w",
+          "_isUserblock": true,
+          "_sourceTheme": "mobirise4",
+          "_cid": "qXh36OzCXt",
+          "_PHPplaceholders": [],
+          "_JSplaceholders": [],
           "_protectedParams": [],
           "_global": false,
           "_once": false,
