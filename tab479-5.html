@@ -91,8 +91,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 
 <section class="features16 cid-qXtESFz6I3" id="features16-1o">
-
-    
+   
 
     
     <div class="container">
@@ -110,9 +109,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <p class="mbr-text pt-3 mbr-light mbr-fonts-style align-left display-7"><br>Артикул: 11172&nbsp;<br>Антикор "три в одном": шумоизоляция,антикоррозия ,
 <br>антигравий
 <br>Производитель:
-<br>	DINOL GmbH (Германия).<br></p><p><strong>Нет наскладе подзаказ</strong></p>
+DINOL GmbH (Германия).<br></p><p><strong>Нет наскладе подзаказ</strong></p>
                     </div>
-                    <div class="mbr-section-btn pt-3 align-left"><a class="btn btn-md btn-warning display-4" href="order.html#form3-1l">Заказать</a></div>
+                    <div class="mbr-section-btn pt-3 align-left">
+                       <a class="btn btn-md btn-warning display-4" href="order.html#form3-1l">Заказать</a>
+                        <!--<a class="btn btn-md btn-warning" onclick="ImgWin('blue')" data-app-placeholder="Введите Текст">Заказать</a> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -279,7 +281,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script src="assets/dropdown/js/script.min.js"></script>
   <script src="assets/theme/js/script.js"></script>
   
-  
+  <script language="JavaScript" type="text/JavaScript">
+function ImgWin(button)
+{
+       var elem = document.getElementById("para1");
+ alert(elem);
+       elem.style.color = button;
+     alert(r);
+}
+</script>
  <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
     <input name="animation" type="hidden">
   </body>
