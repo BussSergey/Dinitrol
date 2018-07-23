@@ -104,9 +104,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br>3559 руб.  (100% предоплата.)<br><br>Производитель:
 DINOL GmbH (Германия).<br></p><p><strong>Нет наскладе подзаказ</strong></p>
                     </div>
-                    <div class="mbr-section-btn pt-3 align-left">
-                       <a class="btn btn-md btn-warning display-4" href="order.html#form3-1l">Заказать</a>
-                        <!--<a class="btn btn-md btn-warning" onclick="ImgWin('blue')" data-app-placeholder="Введите Текст">Заказать</a> -->
+                    <div class="mbr-section-btn pt-3 align-left">                                <a class="btn btn-md btn-warning display-4" href="order.html#form3-1l">Заказать</a>
+                     <!-- <a class="btn btn-md btn-warning" onclick="test(1)" data-app-placeholder="Введите Текст">Заказать</a>-->
                     </div>
                 </div>
             </div>
@@ -274,15 +273,27 @@ DINOL GmbH (Германия).<br></p><p><strong>Нет наскладе под�
   <script src="assets/dropdown/js/script.min.js"></script>
   <script src="assets/theme/js/script.js"></script>
   
-  <script language="JavaScript" type="text/JavaScript">
-function ImgWin(button)
-{
-       var elem = document.getElementById("para1");
- alert(elem);
-       elem.style.color = button;
-     alert(r);
-}
-</script>
+  <script  type="text/javascript">
+function test(c) {
+var  newwin=window.open('1.html');
+	    setTimeout(function () {
+	        wrt(newwin);
+	    },1);
+	}
+	function wrt(oWin) {
+alert(oWin);
+	    var o=oWin.document.getElementById('part');
+alert(o);
+	 if (o) {
+		    o.innerHTML='DINITROl';
+       alert(o.innerHTML);
+        return;
+	    }
+	    setTimeout(function () {
+	        wrt(oWin);
+	    },1);
+	}
+	</script>
  <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
     <input name="animation" type="hidden">
   </body>
