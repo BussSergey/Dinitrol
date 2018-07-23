@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "Headphones",
-    "currentPage": "DINITROL.html",
+    "currentPage": "index.html",
     "theme": {
       "name": "commercem4",
       "title": "CommerceM4",
@@ -7325,7 +7325,7 @@
         }
       ]
     },
-    "DINITROL.html": {
+    "index.html": {
       "settings": {
         "main": true,
         "title": "DINITROL",
